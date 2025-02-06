@@ -7,8 +7,8 @@
 .header {
     background: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url('./assets/img/Header.jpg');
     background-size: cover;
-    height: 30vh;
     border: solid 5px #FFF2CC;
+    height: 35vh;
 }
 
 nav {
@@ -76,5 +76,75 @@ footer {
     & p {
         margin: auto;
         margin: 10px;
+    }
+}
+
+.register {
+    height: 90vh;
+    padding-top: 5vh;
+    & form {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        font-size: 2vw;
+        & label {
+            margin: 1vw;
+        }
+        & input {
+            padding:.5vw;
+            margin: 1vw;
+        }
+        & button {
+            padding:.5vw;
+            margin: 1vw;
+            border: none;
+            background-color: #212121;
+            cursor: pointer;
+            font-size: 2vw;
+        }
+        & button:hover {
+            background-color: #ce8525;
+        }
+    }
+    & p {
+        display: flex;
+        font-size: 2vw;
+        justify-content: center;
+    }
+}
+
+.login {
+    height: 90vh;
+    padding-top: 5vh;
+    & form {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        font-size: 2vw;
+        & label {
+            margin: 1vw;
+        }
+        & input {
+            padding:.5vw;
+            margin: 1vw;
+        }
+        & button {
+            padding:.5vw;
+            margin: 1vw;
+            border: none;
+            background-color: #212121;
+            cursor: pointer;
+            font-size: 2vw;
+        }
+        & button:hover {
+            background-color: #ce8525;
+        }
+    }
+    & p {
+        display: flex;
+        font-size: 2vw;
+        justify-content: center;
     }
 }
