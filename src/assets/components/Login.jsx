@@ -7,6 +7,11 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setMessage('El correo electrónico no es válido.');
+            return;
+        }
         if (!email || !password) {
             setMessage('Todos los campos son obligatorios.');
             return;
