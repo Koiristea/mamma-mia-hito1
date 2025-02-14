@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');

@@ -26,45 +26,183 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-    margin: 4% auto;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    margin: 6% auto;
     border: solid 5px #FFF2CC;
+}
+
+.cards-width {
+    display: flex;
+    width: 30%;
 }
 
 .pizza {
     display: flex;
     justify-content: center;
-    width: 30%;
-    height: auto;
-    margin: auto;
+    width: 90%;
+    height: 60%;
+    margin: 2.5vw auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .card {
+    position: relative;
+    overflow: hidden;
     display: flex;
     text-align: center;
-    justify-content: space-between;
-    margin: .5vw 0 30% 0;
-    width: 100%;
-    flex-direction: column;
     border: 1px solid #dbdbdb;
+    height: 43vh;
+    & p {
+        font-size: 1.3vh;
+        margin: 0 auto;
+        height: auto;
+    }
+    & h2 {
+        margin: 0 auto;
+        font-size: 2vw;
+    }
     & hr {
-        margin: auto;
         width: 90%;
+        height: 2vh;
+        margin: auto;
     }
     & .price {
-        margin: 1vw auto 1vw auto;
+        margin: 1vw auto;
     }
-    & .buttons {
+    & button {
+        display: flex;
+        width: 30%;
+        border-radius: 30px;
+        justify-content: center;
+        padding: .5vw;
+        border: none;
+        background-color: #212121;
+        cursor: pointer;
+    }
+    & .btn-section {
+        display: flex;
         justify-content: space-between;
+        margin: 10px auto;
+        height: 3vh;
         & button {
-            margin: .8vw 3.8vw 1.5vw 3.8vw;
-            padding: .5vw;
-            border: none;
-            background-color: #212121;
-            cursor: pointer;
+            margin: auto;
+            height: auto;
+            width: 40%;
         }
     }
+    & .see-more {
+        display: flex;
+        margin: 0 auto;
+        width: 6vw;
+        height: 4vh;
+        font-size: 1.2vw;
+    }
+}
+
+.pizza-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.pizza .card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.description-container {
+    position: relative;
+    width: 100%;
+    height: 29vw;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.description-container.expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.description-pizza {
+    padding: .3vh;
+}
+
+.see-more {
+    color: #dbdbdb;
+    align-items: center;
+    padding: 200vh;
+}
+
+li {
+    display: flex;
+    margin: 1vw;
+    border: solid 1px #dbdbdb;
+    padding: 1vw;
+    cursor: pointer;
+    align-items: center;
+    &:hover {
+        background-color: #dbdbdb;
+    }
+    & img {
+        width: 20vh;
+        height: auto;
+    }
+}
+
+.shopping {
+    display: flex;
+    flex-direction: column;
+    margin: 3vw auto;
+    align-items: center;
+    & h1 {
+        margin: 2vw 0;
+        font-size: 4.5vw;
+        font-weight: bold;
+    }
+    & li {
+        width: 70vw;
+        justify-content: space-between;
+        font-size: 2.3vw;
+    }
+    & button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1vw;
+        width: 6vw;
+        height: 6vw;
+        color: #dbdbdb;
+        border: none;
+        background-color: #212121;
+        cursor: pointer;
+        & p {
+            margin: 0 0 .9vw 0;
+            font-size: 5vw;
+        }
+    }
+    .pay {
+        background-color: #212121;
+        color: #fff;
+        border: none;
+        margin: 2vw 0;
+        cursor: pointer;
+        font-size: 2vw;
+        width: 11vw;
+        height: 5vw;
+    }
+}
+
+
+
+ul {
+    list-style-type: none;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
 }
 
 footer {
