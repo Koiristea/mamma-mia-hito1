@@ -25,50 +25,116 @@ nav {
 main {
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    width: 100vw;
-    margin: 4% auto;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    margin: 6% auto;
     border: solid 5px #FFF2CC;
+}
+
+.cards-width {
+    display: flex;
+    width: 30%;
 }
 
 .pizza {
     display: flex;
     justify-content: center;
-    width: 90vw;
-    height: auto;
-    margin: auto;
+    width: 90%;
+    height: 60%;
+    margin: 2.5vw auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .card {
+    position: relative;
+    overflow: hidden;
     display: flex;
     text-align: center;
-    margin: 5vh;
-    width: 100vw;
     border: 1px solid #dbdbdb;
-    & img {
-        width: 30vw;
-        margin: 3vh auto;
-    }
+    height: 43vh;
     & p {
-        width: 80%;
-        font-size: 1.2vw;
-        margin: 2vh auto;
+        font-size: 1.3vh;
+        margin: 0 auto;
+        height: auto;
+    }
+    & h2 {
+        margin: 0 auto;
+        font-size: 2vw;
     }
     & hr {
-        margin: auto;
         width: 90%;
+        height: 2vh;
+        margin: auto;
     }
     & .price {
-        margin: 1vw auto 1vw auto;
+        margin: 1vw auto;
     }
     & button {
-        margin: 1vw 3.8vw 1.5vw 3.8vw;
-        padding: 0.5vw;
+        display: flex;
+        width: 30%;
+        border-radius: 30px;
+        justify-content: center;
+        padding: .5vw;
         border: none;
         background-color: #212121;
         cursor: pointer;
     }
+    & .btn-section {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px auto;
+        height: 3vh;
+        & button {
+            margin: auto;
+            height: auto;
+            width: 40%;
+        }
+    }
+    & .see-more {
+        display: flex;
+        margin: 0 auto;
+        width: 6vw;
+        height: 4vh;
+        font-size: 1.2vw;
+    }
+}
+
+.pizza-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.pizza .card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.description-container {
+    position: relative;
+    width: 100%;
+    height: 29vw;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.description-container.expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.description-pizza {
+    padding: .3vh;
+}
+
+.see-more {
+    color: #dbdbdb;
+    align-items: center;
+    padding: 200vh;
 }
 
 li {

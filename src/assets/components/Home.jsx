@@ -7,16 +7,16 @@ const Home = () => {
     <>
       <Header />
       <main>
-        {pizzas.map((pizza) => (
-          <CardPizza
-            key={pizza.id}
-            name={pizza.name}
-            price={pizza.price}
-            ingredients={pizza.ingredients.join(', ')}
-            img={pizza.img}
-            desc={pizza.desc}
-          />
-        ))}
+          {pizzas.map((pizza) => (
+            <CardPizza
+              key={pizza.id}
+              name={pizza.name}
+              price={pizza.price}
+              ingredients={pizza.ingredients.join(', ')}
+              img={pizza.img}
+              desc={pizza.desc}
+            />
+          ))}
       </main>
     </>
   );
