@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const CardPizza = ({ name, price, ingredients, img, desc }) => {
+const CardPizza = ({ name, price, ingredients, img /*desc*/ }) => {
   return (
     <div className="pizza">
       <div className="card">
         <img className="border rounded" src={img} alt={name} />
         <h2 className="fs-3 m-2">{name}</h2>
-        <p>{desc}</p>
+        {/*<p>{desc}</p>*/}
         <hr />
         <p>Ingredientes: <br />🍕{ingredients}</p>
         <hr />
@@ -25,7 +25,7 @@ CardPizza.propTypes = {
   price: PropTypes.number.isRequired,
   ingredients: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
+  //desc: PropTypes.string.isRequired,
 };
 
 export default CardPizza;
