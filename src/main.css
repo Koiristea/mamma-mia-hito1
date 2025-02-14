@@ -68,10 +68,10 @@ li {
     margin: 1vw;
     border: solid 1px #dbdbdb;
     padding: 1vw;
-    cursor: pointer;
     align-items: center;
     &:hover {
-        background-color: #dbdbdb;
+        background-color: #d8aa4d;
+        color: white;
     }
     & img {
         width: 20vh;
@@ -79,11 +79,32 @@ li {
     }
 }
 
+.ingredients {
+    display: flex;
+    margin-top: 1vw;
+    flex-direction: column;
+    font-size: 1.6vw;
+    & li {
+    margin: auto;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.2vw;
+    border: none;
+    height: 2vw;
+    text-decoration: underline;
+    }
+}
+
 .shopping {
     display: flex;
+    height: 100%;
     flex-direction: column;
     margin: 3vw auto;
     align-items: center;
+    & img {
+        width: 18vw;
+        height: auto;
+    }
     & h1 {
         margin: 2vw 0;
         font-size: 4.5vw;
@@ -120,6 +141,9 @@ li {
         width: 11vw;
         height: 5vw;
     }
+    & ul {
+        padding: 0;
+    }
 }
 
 ul {
@@ -132,12 +156,17 @@ ul {
 footer {
     border: solid 5px #FFF2CC;
     margin: auto 0;
-    padding: 1em;
+    padding: 1vh;
     bottom: 0;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     & p {
+        display: flex;
         margin: auto;
-        margin: 10px;
+        height: 5vw;
+        font-size: 2vw;
     }
 }
 

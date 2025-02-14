@@ -12,9 +12,9 @@ const Home = () => {
             key={pizza.id}
             name={pizza.name}
             price={pizza.price}
-            ingredients={pizza.ingredients.join(', ')}
+            ingredients={pizza.ingredients}
             img={pizza.img}
-            desc={pizza.desc}
+            //desc={pizza.desc}
           />
         ))}
       </main>

@@ -8,7 +8,14 @@ const CardPizza = ({ name, price, ingredients, img /*desc*/ }) => {
         <h2 className="fs-3 m-2">{name}</h2>
         {/*<p>{desc}</p>*/}
         <hr />
-        <p>Ingredientes: <br />🍕{ingredients}</p>
+        <p className='ingredients'>Ingredientes: 🍕
+          {ingredients.map((ingredient) => (
+            <li
+          key={ingredient}
+            >{ingredient}
+            </li>
+          ))}
+        </p>
         <hr />
         <p className="price fs-4 fw-bold">Precio: ${price.toLocaleString()}</p>
         <div>
