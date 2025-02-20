@@ -159,6 +159,7 @@ footer {
     padding: 1vh;
     bottom: 0;
     width: 100%;
+    margin-top: 12vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,5 +238,73 @@ footer {
         display: flex;
         font-size: 2vw;
         justify-content: center;
+    }
+}
+
+.pizza-container {
+    display: flex;
+    justify-content: center;
+    padding: 10vh 12vh;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 10px;
+    & h1 {
+        text-align: start;
+    }
+}
+
+.info {
+    width: 50vw;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.pizza-image {
+    width: 40vw;
+    border-radius: 10px;
+}
+
+.pizza-description {
+    font-size: 1vw;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+.pizza-ingredients {
+    list-style-type: none;
+    display: flex;
+    width: 20%;
+    & li {
+        font-size: 14px;
+        margin: 0;
+        border: none;
+        height: 1vh;
+        width: 10vw;
+    }
+}
+
+.buy {
+    display: flex;
+    justify-content: space-between;
+    margin: auto 10%;
+    & .pizza-price {
+        font-size: 18px;
+        font-weight: bold;
+        margin: auto;
+    }
+    & .add-to-cart-button {
+        background-color: #212121;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
     }
 }
