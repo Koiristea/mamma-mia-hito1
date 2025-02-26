@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { pizzaCart } from './pizzas.js';
+import { pizzaCart } from '../pizzas.js';
 
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart);
@@ -28,7 +28,7 @@ const Cart = () => {
       <h1>Shopping Cart</h1>
       <ul>
         {cart.map((item) => (
-          <li key={item.id}>
+          <li className='li-cart' key={item.id}>
             <img src={item.img} alt={item.name} />
             {item.name} - ${item.price.toLocaleString()}
             <button onClick={() => decrementQuantity(item.id)}><p>-</p></button>
