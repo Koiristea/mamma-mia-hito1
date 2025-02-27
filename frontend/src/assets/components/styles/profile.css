@@ -1,0 +1,10 @@
+.email {
+    font-size: 2vw;
+  }
+
+.close {
+    font-size: 2vw;
+    background-color: #ce8525;
+    border: none;
+    cursor: pointer;
+}

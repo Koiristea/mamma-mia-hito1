@@ -1,4 +1,6 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/home.css'
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -11,13 +13,26 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Nuestras Pizzas</h1>
-      <ul>
+    <div className="container">
+      <h1 className=" title text-center">Nuestras Pizzas</h1>
+      <div className="row">
         {pizzas.map(pizza => (
-          <li key={pizza.id}>{pizza.name}</li>
+          <div className="col-md-6 mb-4" key={pizza.id}>
+            <div className="card h-100 d-flex flex-row align-items-center">
+              <div className="largo w-45 p-3">
+                <h5 className="card-title">{pizza.name}</h5>
+                <p className="card-text">{pizza.desc}</p>
+                <p className="card-text"><strong>🍕Ingredientes:</strong> {pizza.ingredients.join(", ")}</p>
+              </div>
+              <div className="right d-flex flex-column align-items-start p-3 w-55">
+                <img src={pizza.img} className="img-fluid" alt={pizza.name} />
+                <p className="pizza-price">Precio: ${pizza.price}</p>
+                <button className="button-home add-to-cart">Añadir 🛒</button>
+                </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
