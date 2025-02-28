@@ -53,11 +53,11 @@ const Navbar = () => {
                     🔐Register
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/*<li className="nav-item">
                   <Link to="/profile" className="nav-link text-white border border-white rounded mx-2">
                     👤Profie
                   </Link>
-                </li>
+                </li>*/}
               </>
             )}
           </ul>
