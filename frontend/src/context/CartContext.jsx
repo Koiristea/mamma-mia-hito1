@@ -27,7 +27,11 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const removeFromCart = useCallback((productId) => {
-    setCart((prevCart) => prevCart.filter(product => product.id !== productId));
+    setCart((prevCart) => {
+      return prevCart.map(item => 
+        item.id === productId ? { ...item, count: item.count - 1 } : item
+      ).filter(item => item.count > 0);
+    });
   }, []);
 
   const calculateTotalPrice = useCallback(() => {

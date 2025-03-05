@@ -12,7 +12,7 @@ const Cart = () => {
 
   const decrementQuantity = (id) => {
     const product = cart.find(item => item.id === id);
-    if (product && product.count > 1) {
+    if (product && product.count < 1) {
       removeFromCart(id);
       addToCart({ ...product, count: product.count - 1 });
     } else {
