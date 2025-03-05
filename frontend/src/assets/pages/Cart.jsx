@@ -1,39 +1,38 @@
-import { useState } from 'react';
-import { pizzaCart } from './pizzas.js';
+import useCart from '../../context/useCart';
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
+  const { cart, addToCart, removeFromCart, calculateTotalPrice } = useCart();
 
   const incrementQuantity = (id) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id ? { ...item, count: item.count + 1 } : item
-      )
-    );
+    const product = cart.find(item => item.id === id);
+    if (product) {
+      addToCart(product);
+    }
   };
 
   const decrementQuantity = (id) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id && item.count > 0
-          ? { ...item, count: item.count - 1 } : item
-      ).filter(item => item.count > 0)
-    );
+    const product = cart.find(item => item.id === id);
+    if (product && product.count > 1) {
+      removeFromCart(id);
+      addToCart({ ...product, count: product.count - 1 });
+    } else {
+      removeFromCart(id);
+    }
   };
 
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.count, 0);
+  const totalPrice = calculateTotalPrice();
 
   return (
     <div className='shopping'>
       <h1>Shopping Cart</h1>
       <ul>
-        {cart.map((item) => (
+        {cart.map(item => (
           <li className='li-cart' key={item.id}>
             <img src={item.img} alt={item.name} />
             {item.name} - ${item.price.toLocaleString()}
-            <button onClick={() => decrementQuantity(item.id)}><p>-</p></button>
+            <button onClick={() => decrementQuantity(item.id)}>-</button>
             {item.count}
-            <button onClick={() => incrementQuantity(item.id)}><p>+</p></button>
+            <button onClick={() => incrementQuantity(item.id)}>+</button>
           </li>
         ))}
       </ul>
