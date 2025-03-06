@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/home.css';
-import useCart from '../../context/useCart';
+import { useCart } from '../../context/CartContext';
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);

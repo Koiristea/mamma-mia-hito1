@@ -1,14 +1,14 @@
 import { CartProvider } from './context/CartContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './assets/components/Navbar'
-import Footer from './assets/components/Footer'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './assets/pages/Home'
 import Cart from './assets/pages/Cart'
 import Pizza from './assets/pages/Pizza'
 import LoginPage from './assets/pages/Login'
 import Register from './assets/pages/Register'
-import NotFound from './assets/components/NotFound'
-import Profile from './assets/components/Profile'
+import NotFound from './components/NotFound'
+import Profile from './components/Profile'
 
 const App = () => {
   return (

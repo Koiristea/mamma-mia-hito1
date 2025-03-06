@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
-import useCart from '../../context/useCart';
+import { useCart } from '../context/CartContext';
+
 const Navbar = () => {
   const { calculateTotalPrice } = useCart();
   const total = calculateTotalPrice();

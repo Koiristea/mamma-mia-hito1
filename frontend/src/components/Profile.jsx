@@ -1,4 +1,4 @@
-import './styles/profile.css'
+import '../styles/profile.css'
 function Profile() {
   return (
     <div className="container mt-5">
