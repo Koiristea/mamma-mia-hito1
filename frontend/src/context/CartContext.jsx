@@ -1,6 +1,5 @@
-import { createContext, useState, useMemo, useCallback, useEffect, useContext } from 'react'
+import { createContext, useState, useMemo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 
 const CartContext = createContext();
 
@@ -18,7 +17,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find(item => item.id === product.id);
       if (existingProduct) {
-        return prevCart.map(item =>
+        return prevCart.map(item => 
           item.id === product.id ? { ...item, count: item.count + 1 } : item
         );
       } else {
@@ -29,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = useCallback((productId) => {
     setCart((prevCart) => {
-      return prevCart.map(item =>
+      return prevCart.map(item => 
         item.id === productId ? { ...item, count: item.count - 1 } : item
       ).filter(item => item.count > 0);
     });
@@ -56,7 +55,5 @@ export const CartProvider = ({ children }) => {
 CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export const useCart = () => useContext(CartContext);
 
 export default CartContext;

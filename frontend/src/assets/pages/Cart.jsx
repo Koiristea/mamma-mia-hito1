@@ -1,7 +1,7 @@
-import { useCart } from "../../context/CartContext";
+import useCart from '../../context/useCart';
 
 const Cart = () => {
-  const { cart, addToCart, removeFromCart, calculateTotalPrice } = useCart()
+  const { cart, addToCart, removeFromCart, calculateTotalPrice } = useCart();
 
   const incrementQuantity = (id) => {
     const product = cart.find(item => item.id === id);
