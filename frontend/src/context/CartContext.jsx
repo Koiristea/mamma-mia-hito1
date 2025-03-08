@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find(item => item.id === product.id);
       if (existingProduct) {
-        return prevCart.map(item => 
+        return prevCart.map(item =>
           item.id === product.id ? { ...item, count: item.count + 1 } : item
         );
       } else {
