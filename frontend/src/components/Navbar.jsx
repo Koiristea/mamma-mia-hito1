@@ -1,9 +1,16 @@
-import {Link} from 'react-router-dom'
-import useCart from '../context/useCart'
+import { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import useCart from '../context/useCart';
+import { UserContext } from '../context/UserContext';
+
 const Navbar = () => {
+  const { token, logout } = useContext(UserContext);
   const { calculateTotalPrice } = useCart();
   const total = calculateTotalPrice();
-  const token = true;
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [calculateTotalPrice]);
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-dark">
@@ -39,9 +46,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/logout" className="nav-link text-white border border-white rounded mx-2">
+                  <button
+                    onClick={logout} className="nav-link text-white border border-white rounded mx-2">
                     🔒Logout
-                  </Link>
+                  </button>
                 </li>
               </>
             ) : (
@@ -66,7 +74,7 @@ const Navbar = () => {
           </ul>
           <li className='nav-item'>
           <Link to="/cart" className="btn total border border-white text-white">
-            🛒 Total: ${total.toLocaleString()}
+            🛒 Total: ${total?.toLocaleString() ?? 0}
           </Link>
           </li>
         </div>

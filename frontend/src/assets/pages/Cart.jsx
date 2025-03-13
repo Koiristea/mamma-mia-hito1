@@ -1,3 +1,4 @@
+import React from 'react';
 import useCart from '../../context/useCart';
 
 const Cart = () => {
@@ -20,7 +21,15 @@ const Cart = () => {
     }
   };
 
-  const totalPrice = calculateTotalPrice();
+  const totalPrice = React.useMemo(() => calculateTotalPrice(), [calculateTotalPrice]);
+
+  if (cart.lenght === 0) {
+    return (
+      <div className='shopping'>
+        <h1>Tu carro de compras está vacío</h1>
+      </div>
+    )
+  }
 
   return (
     <div className='shopping'>
@@ -37,7 +46,7 @@ const Cart = () => {
         ))}
       </ul>
       <h2>Total: ${totalPrice.toLocaleString()}</h2>
-      <button className='pay'>Pagar</button>
+      <button className='pay' disabled={cart.lenght === 0}>Pagar</button>
     </div>
   );
 };
