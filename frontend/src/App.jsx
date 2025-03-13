@@ -1,5 +1,4 @@
 import { CartProvider } from './context/CartContext';
-import { UserProvider } from './context/UserProvider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -11,6 +10,8 @@ import Register from './assets/pages/Register'
 import NotFound from './components/NotFound'
 import Profile from './components/Profile'
 import ProtectedRoute from './components/ProtectedRoute';
+import UserProvider from './context/UserProvider';
+
 
 const App = () => {
   return (

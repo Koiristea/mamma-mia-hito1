@@ -19,6 +19,7 @@ const CardPizza = ({ name, price, ingredients, img /*desc*/ }) => {
         <hr />
         <p className="price fs-4 fw-bold">Precio: ${price.toLocaleString()}</p>
         <div>
+          <button className="bg-light border rounded border-dark">Ver más 👀</button>
           <button className="bg-dark text-white border rounded">Añadir 🛒</button>
         </div>
       </div>

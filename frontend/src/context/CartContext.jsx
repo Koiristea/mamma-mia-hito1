@@ -1,23 +1,23 @@
-import { createContext, useState, useMemo, useCallback, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { createContext, useState, useMemo, useCallback, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
+    const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = useCallback((product) => {
     setCart((prevCart) => {
-      const existingProduct = prevCart.find(item => item.id === product.id);
+      const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
-        return prevCart.map(item =>
+        return prevCart.map((item) =>
           item.id === product.id ? { ...item, count: item.count + 1 } : item
         );
       } else {
@@ -27,15 +27,17 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const removeFromCart = useCallback((productId) => {
-    setCart((prevCart) => {
-      return prevCart.map(item => 
-        item.id === productId ? { ...item, count: item.count - 1 } : item
-      ).filter(item => item.count > 0);
-    });
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId ? { ...item, count: item.count - 1 } : item
+        )
+        .filter((item) => item.count > 0)
+    );
   }, []);
 
   const calculateTotalPrice = useCallback(() => {
-    return cart.reduce((total, product) => total + (product.price * product.count), 0);
+    return cart.reduce((total, product) => total + product.price * product.count, 0);
   }, [cart]);
 
   const value = useMemo(() => ({
@@ -45,11 +47,7 @@ export const CartProvider = ({ children }) => {
     calculateTotalPrice,
   }), [cart, addToCart, removeFromCart, calculateTotalPrice]);
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
 CartProvider.propTypes = {
