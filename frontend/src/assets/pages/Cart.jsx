@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import useCart from '../../context/useCart';
+import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import './styles/Cart.css';
-
+import useCart from "../../context/useCart";
+import './styles/Cart.css'
 const Cart = () => {
-  const { token } = useContext(UserContext);
   const { cart, addToCart, removeFromCart, calculateTotalPrice } = useCart();
+  const { token } = useContext(UserContext);
 
   const incrementQuantity = (id) => {
     const product = cart.find(item => item.id === id);
@@ -13,7 +12,6 @@ const Cart = () => {
       addToCart(product);
     }
   };
-
   const decrementQuantity = (id) => {
     const product = cart.find(item => item.id === id);
     if (product && product.count < 1) {
@@ -26,11 +24,38 @@ const Cart = () => {
 
   const totalPrice = calculateTotalPrice();
 
+  const handleCheckout = async () => {
+    if (!token) {
+      alert("Debes iniciar sesión para realizar el checkout.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(cart),
+      });
+
+      if (response.ok) {
+        alert("¡Compra realizada con éxito!");
+      } else {
+        alert("Error al procesar el checkout.");
+      }
+    } catch (error) {
+      console.error("Error al realizar el checkout:", error);
+      alert("Ocurrió un problema.");
+    }
+  };
+
   return (
-    <div className='shopping'>
-      <h1>Shopping Cart</h1>
+    <div className="shopping">
+      <h2>Carrito de Compras</h2>
       <ul>
-        {cart.map(item => (
+        {cart.map((item) => (
           <li className='li-cart' key={item.id}>
             <img src={item.img} alt={item.name} />
             {item.name} - ${item.price.toLocaleString()}
@@ -41,7 +66,9 @@ const Cart = () => {
         ))}
       </ul>
       <h2>Total: ${totalPrice.toLocaleString()}</h2>
-      <button className='pay' disabled={!token}>Pagar</button>
+      <button className="pay" onClick={handleCheckout} disabled={!token}>
+        Pagar
+      </button>
     </div>
   );
 };

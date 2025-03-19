@@ -1,5 +1,5 @@
 import { CartProvider } from './context/CartContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './assets/pages/Home'
@@ -15,9 +15,9 @@ import UserProvider from './context/UserProvider';
 
 const App = () => {
   return (
+    <BrowserRouter>
     <UserProvider>
       <CartProvider>
-        <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -34,9 +34,9 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-        </Router>
       </CartProvider>
     </UserProvider>
+    </BrowserRouter>
   );
 };
 

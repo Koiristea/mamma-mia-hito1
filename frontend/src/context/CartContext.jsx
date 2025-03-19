@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo, useCallback, useEffect } from "react";
+import { createContext, useState, useMemo, useCallback, useEffect, } from "react";
 import PropTypes from "prop-types";
 
 const CartContext = createContext();
