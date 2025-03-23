@@ -41,14 +41,18 @@ const UserProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const { data } = await axios.post("/api/auth/register", { email, password });
+      const { data } = await axios.post("http://localhost:5000/api/auth/register",
+      { email, password });
       localStorage.setItem("token", data.token);
-      setToken(data.token);
       setUser(jwtDecode(data.token));
       navigate("/");
     } catch (err) {
       console.error("Error during registration:", err);
-      setError("Error al registrarse. Intenta nuevamente.");
+      if (err.response && err.response.status === 409) {
+        setError("El correo ya está registrado.");
+      } else {
+        setError("Error al registrarse. Intenta nuevamente.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -67,7 +71,7 @@ const UserProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const { data } = await axios.get("/api/auth/me", {
+      const { data } = await axios.get("http://localhost:5000/api/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(data);
