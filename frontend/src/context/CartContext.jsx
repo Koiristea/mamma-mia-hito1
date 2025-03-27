@@ -1,7 +1,7 @@
 import { createContext, useState, useMemo, useCallback, useEffect, } from "react";
 import PropTypes from "prop-types";
 
-const CartContext = createContext();
+const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
@@ -36,6 +36,11 @@ export const CartProvider = ({ children }) => {
     );
   }, []);
 
+  const clearCart = useCallback(() => {
+    setCart([]); // Limpia el carrito por completo
+  }, []);
+
+
   const calculateTotalPrice = useCallback(() => {
     return cart.reduce((total, product) => total + product.price * product.count, 0);
   }, [cart]);
@@ -44,8 +49,9 @@ export const CartProvider = ({ children }) => {
     cart,
     addToCart,
     removeFromCart,
+    clearCart,
     calculateTotalPrice,
-  }), [cart, addToCart, removeFromCart, calculateTotalPrice]);
+  }), [cart, addToCart, removeFromCart, clearCart, calculateTotalPrice]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
@@ -53,5 +59,6 @@ export const CartProvider = ({ children }) => {
 CartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
 
 export default CartContext;

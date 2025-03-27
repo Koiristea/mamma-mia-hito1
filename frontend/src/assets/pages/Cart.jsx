@@ -1,10 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from 'react'
 import { UserContext } from "../../context/UserContext";
 import useCart from "../../context/useCart";
 import './styles/Cart.css'
+import CartContext from '../../context/CartContext';
 const Cart = () => {
-  const { cart, addToCart, removeFromCart, calculateTotalPrice } = useCart();
+  const { cart, addToCart, removeFromCart, calculateTotalPrice, clearCart } = useCart(CartContext);
   const { token } = useContext(UserContext);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+
 
   const incrementQuantity = (id) => {
     const product = cart.find(item => item.id === id);
@@ -29,27 +34,36 @@ const Cart = () => {
       alert("Debes iniciar sesión para realizar el checkout.");
       return;
     }
+    if (cart.length === 0) {
+      setErrorMessage('El carrito está vacío. Agrega productos para continuar.');
+      return;
+    }
+
 
     try {
-      const response = await fetch("/api/checkouts", {
+      const response = await fetch('http://localhost:5000/api/checkouts', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(cart),
+          },
+        body: JSON.stringify({
+          cart: cart,
+        }),
       });
 
       if (response.ok) {
-        alert("¡Compra realizada con éxito!");
+        setSuccessMessage("¡Compra realizada con éxito!");
+        clearCart(); // Limpia el carrito después de la compra
       } else {
-        alert("Error al procesar el checkout.");
+        throw new Error("Error al realizar la compra.");
       }
     } catch (error) {
-      console.error("Error al realizar el checkout:", error);
-      alert("Ocurrió un problema.");
+      setErrorMessage("Hubo un error al realizar la compra. Inténtalo nuevamente.");
+      console.error("Error al realizar la compra:", error);
     }
   };
+
 
   return (
     <div className="shopping">
@@ -69,6 +83,8 @@ const Cart = () => {
       <button className="pay" onClick={handleCheckout} disabled={!token}>
         Pagar
       </button>
+      {successMessage && <div className="success-message">{successMessage}</div>}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 };
