@@ -1,10 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useCart from '../../context/useCart';
+
 
 const Pizza = () => {
   const { id } = useParams();
   const [pizza, setPizza] = useState(null);
+  const { addToCart } = useCart();
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/pizzas/${id}`)
@@ -28,7 +32,10 @@ const Pizza = () => {
         </ul>
         <div className="buy">
           <p className="pizza-price">Precio: ${pizza.price}</p>
-          <button className="add-to-cart">Añadir 🛒</button>
+          <button className="button-home add-to-cart"
+              onClick={() => addToCart(pizza)}
+              > Añadir 🛒
+          </button>
         </div>
       </div>
     </div>

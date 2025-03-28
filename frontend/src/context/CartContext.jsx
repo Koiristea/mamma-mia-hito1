@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const clearCart = useCallback(() => {
-    setCart([]); // Limpia el carrito por completo
+    setCart([]);
   }, []);
 
 

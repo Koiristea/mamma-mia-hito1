@@ -4,6 +4,12 @@
     border: 0;
 }
 
+.pizza-ingredients li {
+    color: #000000;
+    display: flex;
+    justify-content: left;
+}
+
 .container {
     .title {
         font-size: 4.2vw;
@@ -15,6 +21,13 @@
         & img {
             width: 80vw;
         }
+    }
+    .card-text {
+        border: none;
+        height: 40%;
+    }
+    .largo ul {
+        width: 100%;
     }
 }
 @media (max-width: 600px) {

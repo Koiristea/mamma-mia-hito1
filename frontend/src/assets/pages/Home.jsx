@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/home.css';
 import useCart from '../../context/useCart';
+import { v4 as uuidv4 } from 'uuid';
+
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const { addToCart } = useCart();
@@ -29,7 +31,13 @@ const Home = () => {
               <div className="largo w-45 p-3">
                 <h5 className="card-title">{pizza.name}</h5>
                 <p className="card-text">{pizza.desc}</p>
-                <p className="card-text"><strong>Ingredientes:</strong> {pizza.ingredients}</p>
+                <div className="card-text"><strong>Ingredientes:</strong>
+                <ul className="pizza-ingredients">
+                {pizza.ingredients.map(ingredient => (
+                  <li key={uuidv4()}>{ingredient}</li>
+                ))}
+                </ul>
+              </div>
               </div>
               <div className="right d-flex flex-column align-items-start p-3">
                 <img src={pizza.img} className="img-fluid" alt={pizza.name} />

@@ -54,7 +54,7 @@ const Cart = () => {
 
       if (response.ok) {
         setSuccessMessage("¡Compra realizada con éxito!");
-        clearCart(); // Limpia el carrito después de la compra
+        clearCart();
       } else {
         throw new Error("Error al realizar la compra.");
       }
